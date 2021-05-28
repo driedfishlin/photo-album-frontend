@@ -1,0 +1,42 @@
+{
+	"name": "photo-album-frontend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "webpack serve --open",
+		"build": "npm run clean-build-folder && webpack build",
+		"clean-build-folder": "rimraf ./build/*",
+		"flow": "flow",
+		"flow-typed": "flow-typed"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.14.3",
+		"@babel/core": "^7.14.3",
+		"@babel/preset-env": "^7.14.2",
+		"@babel/preset-flow": "^7.13.13",
+		"@babel/preset-react": "^7.13.13",
+		"autoprefixer": "^10.2.6",
+		"babel-loader": "^8.2.2",
+		"css-loader": "^5.2.6",
+		"css-modules-flow-types-loader": "^1.4.1",
+		"flow-bin": "^0.152.0",
+		"flow-typed": "^3.3.1",
+		"html-webpack-plugin": "^5.3.1",
+		"mini-css-extract-plugin": "^1.6.0",
+		"node-sass": "^6.0.0",
+		"postcss-loader": "^5.3.0",
+		"rimraf": "^3.0.2",
+		"sass-loader": "^11.1.1",
+		"webpack": "^5.36.2",
+		"webpack-cli": "^4.6.0",
+		"webpack-dev-server": "^3.11.1"
+	},
+	"dependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	}
+}
