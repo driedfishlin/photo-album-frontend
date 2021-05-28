@@ -1,0 +1,16 @@
+.home_photos_area {
+	> div {
+		gap: 3rem 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		width: max-content;
+	}
+}
+
+.home_photo_item {
+	@include size(12.5rem, 7.5rem);
+
+	// will delete
+	margin-right: 1px;
+	background-color: #000;
+}

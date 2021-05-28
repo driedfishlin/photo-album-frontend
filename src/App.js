@@ -1,11 +1,13 @@
 // @flow
 import * as React from 'react';
 
+import Template from './Template';
+
 class App extends React.Component<{}> {
 	render(): React.Node {
 		return (
 			<>
-				<h1>React</h1>
+				<Template />
 			</>
 		);
 	}

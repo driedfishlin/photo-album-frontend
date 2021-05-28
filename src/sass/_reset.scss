@@ -1,0 +1,36 @@
+* {
+	color: #3e443b;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: jost;
+	font-weight: 300;
+	outline: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+html,
+body {
+	min-width: 100%;
+	min-height: 100%;
+}
+
+html {
+	font-size: 16px;
+}
+body {
+	background-color: $color-brightest;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+li {
+	list-style: none;
+}
+
+button:focus,
+input:focus {
+	outline: none;
+}

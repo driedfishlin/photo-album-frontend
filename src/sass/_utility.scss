@@ -1,0 +1,11 @@
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+// @mixin position_center {
+// 	position: relative;
+// 	transform: translate(-50%, -50%);
+// 	top: 50%;
+// 	left: 50%;
+// }
