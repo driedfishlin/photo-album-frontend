@@ -54,7 +54,7 @@ h4 {
 .layout_main {
 	position: relative;
 	display: grid;
-	grid-template-columns: 3fr 6fr 3fr;
+	grid-template-columns: 3fr 43.5rem 3fr;
 
 	.left_side_area {
 		padding-top: $navigation-height;
@@ -78,6 +78,10 @@ h4 {
 		}
 	}
 
+	.navigation_active {
+		border-bottom: 1px solid $color-text-main;
+	}
+
 	.right_side_area {
 		padding-top: $navigation-height;
 		p {
@@ -94,13 +98,18 @@ h4 {
 
 .background_circle_container {
 	position: absolute;
+	left: -1rem;
 	> div {
 		@include size(30rem);
-		border: 1px solid $color-text-main;
 		border-radius: 50%;
 	}
+	> div:first-child {
+		border: 1px solid $color-text-main;
+		opacity: 0.3;
+	}
 	> div:last-child {
-		transform: translate(30%, -80%);
-		background-color: $color-brightest;
+		transform: translate(30%, -80%) rotate(45deg);
+		background: url('../../public/image/slash.png');
+		opacity: 0.1;
 	}
 }

@@ -6,16 +6,40 @@ class ExternalLinkSide extends React.Component<{}> {
 		return (
 			<ul>
 				<li>
-					<a>FACEBOOK</a>
+					<a
+						href="https://www.facebook.com/OBwithoboe/"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						FACEBOOK
+					</a>
 				</li>
 				<li>
-					<a>INSTAGRAM</a>
+					<a
+						href="https://www.instagram.com/obwithoboe/"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						INSTAGRAM
+					</a>
 				</li>
 				<li>
-					<a>MEDIUM</a>
+					<a
+						href="https://driedfishlin.medium.com/"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						MEDIUM
+					</a>
 				</li>
 				<li>
-					<a>GITHUB</a>
+					<a
+						href="https://github.com/driedfishlin"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						GITHUB
+					</a>
 				</li>
 			</ul>
 		);

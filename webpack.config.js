@@ -2,17 +2,14 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const mode = 'development';
+
 module.exports = {
-	mode: 'development',
+	mode,
 	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, './build'),
 		filename: 'bundle.js',
-	},
-	resolve: {
-		alias: {
-			'@src': path.resolve(__dirname, 'src'),
-		},
 	},
 	// need to provide when using the browserslist plugin
 	target: 'web',
@@ -46,6 +43,17 @@ module.exports = {
 					'sass-loader',
 				],
 			},
+			{
+				test: /\.(png|jpe?g|gif)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]',
+						},
+					},
+				],
+			},
 		],
 	},
 	plugins: [
@@ -58,10 +66,11 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin(),
 	],
-	devtool: 'inline-source-map',
+	// devtool: mode === 'development' ? 'eval' : null,
+	devtool: mode === 'development' ? 'inline-source-map' : null,
+	// devtool:mode === 'development' ?  'eval-source-map': null,
 	devServer: {
-		// contentBase: path.join(__dirname, 'public'),
 		port: 3000,
-		// hot: true,
+		historyApiFallback: true,
 	},
 };
