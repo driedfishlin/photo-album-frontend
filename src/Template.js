@@ -17,6 +17,7 @@ import ExternalLinkSide from './component/ExternalLinkSide';
 import PhotoListArea from './page/home/PhotoListArea';
 import CircleBackground from './component/CircleBackground';
 import Profile from './page/profile/Profile';
+import PhotoPage from './page/photo/PhotoPage';
 
 const mapDispatchToProps = dispatch => ({
 	setPathState: path => dispatch(createChangePathAction(path)),
@@ -34,19 +35,13 @@ type PropsType = {
 };
 
 class Template extends React.Component<PropsType> {
-	// componentDidMount() {
-	// 	console.log(this.props.location.pathname);
-	// 	//TODO> 優化生命週期
-	// 	// 或許不需要存這筆資料？
-	// 	this.props.setPathState(this.props.location.pathname);
-	// }
 	render(): React.Node {
+		const path = this.props.location.pathname;
 		return (
 			<div className={`web_wrap`}>
 				<div className={`layout_warp`}>
 					<CircleBackground />
-					<Header path={this.props.location.pathname} />
-
+					<Header path={path} />
 					<div className={`layout_main`}>
 						<div className={`left_side_area`}>
 							<ExternalLinkSide />
@@ -54,7 +49,7 @@ class Template extends React.Component<PropsType> {
 						<div>
 							<Navigation />
 							<Switch>
-								<Route path="/" exact>
+								<Route path="/">
 									<PhotoListArea />
 								</Route>
 								<Route path="/profile" exact>

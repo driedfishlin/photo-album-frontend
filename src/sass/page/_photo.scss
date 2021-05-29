@@ -1,0 +1,13 @@
+.photo_page_layer {
+	@include size(100vw, 100vh);
+	background-color: rgba(255, 255, 255, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+.photo_page_header {
+	height: $header-height;
+	margin-bottom: $header-margin-bottom;
+}

@@ -13,12 +13,16 @@ header {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
-	margin-bottom: 5rem;
+	// align-items: flex-end;
+	margin-bottom: $header-margin-bottom;
+	height: $header-height;
 
-	h1 {
+	.h1_link {
 		position: absolute;
 		left: -0.3rem;
+	}
+
+	h1 {
 		font-weight: 600;
 		transform: rotate(90deg) translateY(-100%);
 		transform-origin: left top;
@@ -26,6 +30,12 @@ header {
 		font-size: 1.2rem;
 		letter-spacing: 0.05rem;
 	}
+}
+
+.header_title_component {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 
 	h2 {
 		font-size: 4.5rem;
@@ -35,20 +45,22 @@ header {
 		right: -0.8rem;
 		letter-spacing: 0.5rem;
 	}
-}
 
-h3 {
-	letter-spacing: 0.1rem;
-	font-size: 1rem;
-	margin-bottom: 0.5rem;
-	font-weight: 600;
-	position: relative;
-	right: -0.1rem;
-}
+	h3 {
+		letter-spacing: 0.1rem;
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+		position: relative;
+		right: -0.1rem;
+	}
 
-h4 {
-	font-size: 0.7rem;
-	font-weight: 600;
+	h4 {
+		font-size: 0.7rem;
+		font-weight: 600;
+		position: relative;
+		right: -0.05rem;
+	}
 }
 
 .layout_main {
@@ -74,7 +86,7 @@ h4 {
 		height: $navigation-height;
 		a {
 			margin-right: 1rem;
-			// font-weight: 300;
+			// font-weight: 600;
 		}
 	}
 

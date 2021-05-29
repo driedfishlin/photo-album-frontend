@@ -10,6 +10,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './build'),
 		filename: 'bundle.js',
+		publicPath: '/',
 	},
 	// need to provide when using the browserslist plugin
 	target: 'web',

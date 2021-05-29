@@ -1,11 +1,13 @@
 .profile_container {
-	max-width: 696px;
+	width: $profile-img-width;
+	// max-width: 696px;
 	overflow: hidden;
 }
 
 .profile_img_container {
 	position: relative;
-	max-height: 288px;
+	height: $profile-img-height;
+	// max-height: 288px;
 	overflow: hidden;
 	> img {
 		min-width: 100%;
