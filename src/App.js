@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from './store/store';
 
@@ -12,9 +12,7 @@ class App extends React.Component<{}> {
 		return (
 			<Provider store={store}>
 				<BrowserRouter>
-					{/* <Switch> */}
 					<Template />
-					{/* </Switch> */}
 				</BrowserRouter>
 			</Provider>
 		);

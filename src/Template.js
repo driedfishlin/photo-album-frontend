@@ -22,16 +22,25 @@ const mapDispatchToProps = dispatch => ({
 	setPathState: path => dispatch(createChangePathAction(path)),
 });
 
-class Template extends React.Component<{}> {
-	// constructor(props) {
-	// 	super(props);
-	// 	console.log(this.props);
-	// }
+type PropsType = {
+	setPathState: Function,
+	location: {
+		pathname: string,
+		search: string,
+		hash: string,
+		state?: any,
+		key?: string,
+	},
+};
 
+class Template extends React.Component<PropsType> {
+	// componentDidMount() {
+	// 	console.log(this.props.location.pathname);
+	// 	//TODO> 優化生命週期
+	// 	// 或許不需要存這筆資料？
+	// 	this.props.setPathState(this.props.location.pathname);
+	// }
 	render(): React.Node {
-		//TODO> 優化生命週期
-		// console.log(this.props.location.pathname);
-		this.props.setPathState(this.props.location.pathname);
 		return (
 			<div className={`web_wrap`}>
 				<div className={`layout_warp`}>
@@ -67,15 +76,10 @@ class Template extends React.Component<{}> {
 	}
 }
 
-// type connectedPropsType = {
-// 	location: Object,
-// };
-
-//TODO> flow 型別檢查
-
-const connectedPropsCreator = connect(null, mapDispatchToProps);
-const connectedComponent: React.AbstractComponent<{}> = connectedPropsCreator(
-	(withRouter(Template): React.AbstractComponent<{}>)
+const wrappedWithRouterComponent = withRouter(Template);
+const wrapWithConnect = connect(null, mapDispatchToProps);
+const connectedComponent: React.AbstractComponent<{}> = wrapWithConnect(
+	wrappedWithRouterComponent
 );
 
 export default connectedComponent;

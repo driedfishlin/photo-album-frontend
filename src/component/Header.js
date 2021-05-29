@@ -19,7 +19,9 @@ const switchTextByPath = (tag: string, path: string) => {
 	}
 };
 
-class Header extends React.Component<{}> {
+type PropsType = { path: string };
+
+class Header extends React.Component<PropsType> {
 	render(): React.Node {
 		console.log(this.props.path);
 		return (
