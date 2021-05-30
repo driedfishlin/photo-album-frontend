@@ -1,8 +1,9 @@
 $color-text-main: #3e443b;
-$color-brightest: #f3f2ed;
+$color-brightest: rgb(243, 242, 237); // #f3f2ed
+$color-brightest-transparent: rgba(243, 242, 237, 0.8);
 
 $header-height: 7.5rem;
-$header-margin-bottom: 5rem;
-$navigation-height: 4rem;
+$header-margin-bottom: 7.5rem;
+$navigation-height: 64px;
 $profile-img-width: 696px;
 $profile-img-height: 288px;

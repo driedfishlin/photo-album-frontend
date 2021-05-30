@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
 import {
 	BrowserRouter,
 	Switch,
@@ -7,7 +8,6 @@ import {
 	Redirect,
 	withRouter,
 } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import { createChangePathAction } from './store/store';
 
@@ -36,9 +36,21 @@ type PropsType = {
 
 class Template extends React.Component<PropsType> {
 	render(): React.Node {
-		const path = this.props.location.pathname;
+		// get PATHNAME & determine SCROLLBAR is visible
+		const path: string = this.props.location.pathname;
+		const photoPageIsOpen: boolean = path.split('/')[1] === 'photo';
+		const body: ?HTMLElement = document.body;
+		const scrollbarWidth: number = body?.clientWidth
+			? window.innerWidth - body.clientWidth
+			: 0;
+		if (body?.style)
+			body.style.overflowY = photoPageIsOpen ? 'hidden' : 'scroll';
+
 		return (
-			<div className={`web_wrap`}>
+			<div
+				className={`web_wrap`}
+				style={{ paddingRight: photoPageIsOpen ? '15px' : '0px' }}
+			>
 				<div className={`layout_warp`}>
 					<CircleBackground />
 					<Header path={path} />
@@ -49,11 +61,11 @@ class Template extends React.Component<PropsType> {
 						<div>
 							<Navigation />
 							<Switch>
-								<Route path="/">
-									<PhotoListArea />
-								</Route>
 								<Route path="/profile" exact>
 									<Profile />
+								</Route>
+								<Route path="/">
+									<PhotoListArea />
 								</Route>
 								<Redirect to="/" />
 							</Switch>

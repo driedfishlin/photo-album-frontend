@@ -13,7 +13,6 @@ header {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	// align-items: flex-end;
 	margin-bottom: $header-margin-bottom;
 	height: $header-height;
 
@@ -67,47 +66,45 @@ header {
 	position: relative;
 	display: grid;
 	grid-template-columns: 3fr 43.5rem 3fr;
+}
 
-	.left_side_area {
-		padding-top: $navigation-height;
-		ul {
-			padding-top: 13.15rem;
-		}
-		li {
-			margin-bottom: 0.2rem;
-			a {
-				font-size: 0.7rem;
-				letter-spacing: 0.02rem;
-			}
-		}
+.left_side_area {
+	padding-top: $navigation-height;
+	ul {
+		padding-top: 13.15rem;
 	}
-
-	.navigation {
-		height: $navigation-height;
+	li {
+		margin-bottom: 0.2rem;
 		a {
-			margin-right: 1rem;
-			// font-weight: 600;
-		}
-	}
-
-	.navigation_active {
-		border-bottom: 1px solid $color-text-main;
-	}
-
-	.right_side_area {
-		padding-top: $navigation-height;
-		p {
-			white-space: nowrap;
-			font-size: 0.8rem;
-			font-weight: 600;
-			transform: rotate(90deg);
-			transform-origin: top left;
-			position: absolute;
-			left: 100%;
+			font-size: 0.7rem;
+			letter-spacing: 0.02rem;
 		}
 	}
 }
 
+.navigation {
+	height: $navigation-height;
+	a {
+		margin-right: 1rem;
+	}
+}
+
+.navigation_active {
+	border-bottom: 1px solid $color-text-main;
+}
+
+.right_side_area {
+	padding-top: $navigation-height;
+	p {
+		white-space: nowrap;
+		font-size: 0.8rem;
+		font-weight: 600;
+		transform: rotate(90deg);
+		transform-origin: top left;
+		position: absolute;
+		left: 100%;
+	}
+}
 .background_circle_container {
 	position: absolute;
 	left: -1rem;

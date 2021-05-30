@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import PhotoListItem from './component/PhotoListItem';
 import PhotoPage from '../photo/PhotoPage';
@@ -12,14 +12,10 @@ class PhotoListArea extends React.Component<{}> {
 				<Route path="/photo/:photo_id" exact>
 					<PhotoPage />
 				</Route>
-				<div>
-					<PhotoListItem />
-					<PhotoListItem />
-					<PhotoListItem />
-					{/* <PhotoListItem />
-					<PhotoListItem />
-					<PhotoListItem />
-					<PhotoListItem />
+				<div className={`home_page_photos_container`}>
+					<Link to={`/photo/asd`}>
+						<PhotoListItem />
+					</Link>
 					<PhotoListItem />
 					<PhotoListItem />
 					<PhotoListItem />
@@ -33,7 +29,13 @@ class PhotoListArea extends React.Component<{}> {
 					<PhotoListItem />
 					<PhotoListItem />
 					<PhotoListItem />
-					<PhotoListItem /> */}
+					<PhotoListItem />
+					<PhotoListItem />
+					<PhotoListItem />
+					<PhotoListItem />
+					<PhotoListItem />
+					<PhotoListItem />
+					<PhotoListItem />
 				</div>
 			</main>
 		);

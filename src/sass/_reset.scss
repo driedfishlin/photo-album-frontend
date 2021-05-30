@@ -3,11 +3,12 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-	font-family: jost;
+	font-family: jost, 'San Francisco', 'Noto Sans TC', 'PingFang', 'Roboto',
+		'Segoe UI', 'Microsoft JhengHei';
 	font-weight: 300;
 	letter-spacing: 1px;
 
-	outline: 1px dashed rgba(0, 0, 0, 0.2);
+	// outline: 1px dashed rgba(0, 0, 0, 0.2);
 }
 
 html,
@@ -19,6 +20,7 @@ body {
 html {
 	font-size: 16px;
 }
+
 body {
 	background-color: $color-brightest;
 }

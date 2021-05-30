@@ -10,11 +10,13 @@ const switchTextByPath = (tag: string, path: string) => {
 			if (tag === 'h2') return 'LIN';
 			if (tag === 'h3') return 'PROFILE';
 			if (tag === 'h4') return '留下影像是為了記得，並且成就更好的自己';
-		default:
-			// case '/'
+		// default:
+		case '/':
 			if (tag === 'h2') return 'FILMING';
 			if (tag === 'h3') return 'AND KEEP GOING';
 			if (tag === 'h4') return '細數那些在自己人生路途上留下的影像';
+		default:
+			return '';
 	}
 };
 
