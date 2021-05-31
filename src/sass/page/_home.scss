@@ -1,16 +1,47 @@
 .home_photos_area {
 	> .home_page_photos_container {
-		gap: 3rem 0;
+		gap: 3.05rem 0;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		width: max-content;
+		//PART> RWD
+		@include screen-md {
+			grid-template-columns: 1fr 1fr;
+		}
+		@include screen-sm {
+			display: block;
+			width: 100%;
+		}
+	}
+	@include screen-sm {
+		width: 100%;
+		margin-left: 3rem;
 	}
 }
 
 .home_photo_item {
 	@include size(12.5rem, 7.5rem);
+	overflow: hidden;
 
-	// will delete
-	margin-right: 1px;
-	background-color: #000;
+	> img {
+		filter: grayscale(85%);
+		transition: filter 0.5s;
+		&:hover {
+			transition: filter 1s;
+			filter: grayscale(0%);
+		}
+	}
+
+	@include screen-lg {
+		@include size(10.5rem, 7rem);
+	}
+	@include screen-md {
+		@include size(10rem, 7rem);
+	}
+	@include screen-sm {
+		@include size(auto, 24rem);
+	}
+	@include screen-xs {
+		@include size(auto, 20.6rem);
+	}
 }

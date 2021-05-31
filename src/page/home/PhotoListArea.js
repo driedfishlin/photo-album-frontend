@@ -13,9 +13,7 @@ class PhotoListArea extends React.Component<{}> {
 					<PhotoPage />
 				</Route>
 				<div className={`home_page_photos_container`}>
-					<Link to={`/photo/asd`}>
-						<PhotoListItem />
-					</Link>
+					<PhotoListItem />
 					<PhotoListItem />
 					<PhotoListItem />
 					<PhotoListItem />

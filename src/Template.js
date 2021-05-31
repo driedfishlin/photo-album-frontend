@@ -10,6 +10,9 @@ import {
 } from 'react-router-dom';
 
 import { createChangePathAction } from './store/store';
+import { createToggleHiddenMenu } from './store/store';
+
+import type { UIStateType } from './store/store';
 
 import Header from './component/Header';
 import Navigation from './component/Navigation';
@@ -19,12 +22,19 @@ import CircleBackground from './component/CircleBackground';
 import Profile from './page/profile/Profile';
 import PhotoPage from './page/photo/PhotoPage';
 
+const mapStateFromProps = state => ({
+	UIState: state.UIState,
+});
+
 const mapDispatchToProps = dispatch => ({
 	setPathState: path => dispatch(createChangePathAction(path)),
+	setHiddenMenuState: command => dispatch(createToggleHiddenMenu(command)),
 });
 
 type PropsType = {
+	UIState: UIStateType,
 	setPathState: Function,
+	setHiddenMenuState: Function,
 	location: {
 		pathname: string,
 		search: string,
@@ -36,6 +46,7 @@ type PropsType = {
 
 class Template extends React.Component<PropsType> {
 	render(): React.Node {
+		console.log(this.props);
 		// get PATHNAME & determine SCROLLBAR is visible
 		const path: string = this.props.location.pathname;
 		const photoPageIsOpen: boolean = path.split('/')[1] === 'photo';
@@ -43,8 +54,12 @@ class Template extends React.Component<PropsType> {
 		const scrollbarWidth: number = body?.clientWidth
 			? window.innerWidth - body.clientWidth
 			: 0;
+		// console.log(this.props.UIState.hiddenMenuShow);
 		if (body?.style)
-			body.style.overflowY = photoPageIsOpen ? 'hidden' : 'scroll';
+			body.style.overflowY =
+				photoPageIsOpen || this.props.UIState.hiddenMenuShow
+					? 'hidden'
+					: 'scroll';
 
 		return (
 			<div
@@ -53,7 +68,11 @@ class Template extends React.Component<PropsType> {
 			>
 				<div className={`layout_warp`}>
 					<CircleBackground />
-					<Header path={path} />
+					<Header
+						path={path}
+						setHiddenMenuState={this.props.setHiddenMenuState}
+						isHiddenMenuShow={this.props.UIState.hiddenMenuShow}
+					/>
 					<div className={`layout_main`}>
 						<div className={`left_side_area`}>
 							<ExternalLinkSide />
@@ -84,7 +103,7 @@ class Template extends React.Component<PropsType> {
 }
 
 const wrappedWithRouterComponent = withRouter(Template);
-const wrapWithConnect = connect(null, mapDispatchToProps);
+const wrapWithConnect = connect(mapStateFromProps, mapDispatchToProps);
 const connectedComponent: React.AbstractComponent<{}> = wrapWithConnect(
 	wrappedWithRouterComponent
 );

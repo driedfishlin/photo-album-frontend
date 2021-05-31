@@ -20,8 +20,9 @@ class PhotoPage extends React.Component<{}> {
 
 		// use to extend the Image height
 		this.onPageScroll = () => {
-			if (!this.imgRef.current || !this.textContentRef.current) return;
+			if (!this.imgRef?.current) return;
 			this.imgRef.current.classList.add('extend_photo');
+			if (!this.textContentRef?.current) return;
 			this.textContentRef.current.classList.remove(
 				'hide_photo_page_text_content'
 			);

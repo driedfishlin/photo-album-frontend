@@ -3,13 +3,15 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import TitleComponent from './TitleComponent';
+import HiddenMenu from './HiddenMenu';
 
 const switchTextByPath = (tag: string, path: string) => {
 	switch (path) {
 		case '/profile':
 			if (tag === 'h2') return 'LIN';
 			if (tag === 'h3') return 'PROFILE';
-			if (tag === 'h4') return '留下影像是為了記得，並且成就更好的自己';
+			if (tag === 'h4')
+				return '留下影像是為了記得，然後努力成就更好的自己';
 		// default:
 		case '/':
 			if (tag === 'h2') return 'FILMING';
@@ -20,18 +22,52 @@ const switchTextByPath = (tag: string, path: string) => {
 	}
 };
 
-type PropsType = { path: string };
+type PropsType = {
+	path: string,
+	setHiddenMenuState: boolean => void,
+	isHiddenMenuShow: boolean,
+};
 
 class Header extends React.Component<PropsType> {
 	render(): React.Node {
+		console.log(this.props);
 		return (
 			<header>
+				<button
+					onClick={() => {
+						if (this.props.isHiddenMenuShow) {
+							this.props.setHiddenMenuState(false);
+						} else {
+							this.props.setHiddenMenuState(true);
+						}
+					}}
+					className={`small_screen_hamburger_btn ${
+						this.props.isHiddenMenuShow
+							? 'transform_to_close_btn'
+							: ''
+					}`}
+				>
+					<div />
+					<div />
+					<div />
+				</button>
+				<HiddenMenu
+					shouldOpen={this.props.isHiddenMenuShow}
+					setHiddenMenuState={this.props.setHiddenMenuState}
+				/>
+
 				<TitleComponent
 					h2={switchTextByPath('h2', this.props.path)}
 					h3={switchTextByPath('h3', this.props.path)}
 					h4={switchTextByPath('h4', this.props.path)}
 				/>
-				<Link to={`/`} className={`h1_link`}>
+				<Link
+					to={`/`}
+					className={`h1_link`}
+					onClick={() =>
+						window.scrollTo({ top: 0, behavior: 'smooth' })
+					}
+				>
 					<h1>THE&nbsp;&nbsp;FRAME&nbsp;&nbsp;STATE</h1>
 				</Link>
 			</header>
