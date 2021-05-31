@@ -4,22 +4,46 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 10;
+	z-index: 20;
 	overflow-y: scroll;
 	overflow-x: hidden;
 
 	background-color: $color-brightest-transparent;
 }
 
+.photo_page_layout_warp {
+	@extend .layout_warp;
+	// 原本是 1.5rem
+	margin-left: 0;
+	margin-right: 0;
+}
+
 .photo_page_header {
 	height: $header-height;
 	margin-bottom: $header-margin-bottom;
+	margin-right: 1.5rem;
+}
+
+.photo_page_layout_main {
+	@extend .layout_main;
+	@include screen-md {
+		display: block;
+
+		//PART> RWD
+		> div:first-child {
+			display: none;
+		}
+	}
 }
 
 .photo_page_main {
 	grid-column-start: 2;
 	grid-column-end: 4;
 	margin-bottom: 7rem;
+
+	@include screen-md {
+		width: 100%;
+	}
 }
 
 .photo_page_close_btn {
@@ -46,8 +70,13 @@
 }
 
 .photo_page_close_btn_below_the_img {
+	margin-right: 1.5rem;
 	> a {
 		float: right;
+	}
+
+	@include screen-md {
+		padding-bottom: 7.3rem;
 	}
 }
 
@@ -58,6 +87,22 @@
 
 	transition: height 1s 0.2s;
 
+	> img {
+		width: 100%;
+		height: 100%;
+
+		// !!! IE NOT SUPPORT !!!
+		object-fit: cover;
+		// for IE,
+		// but effect is not good
+		// width: auto;
+		// height: auto;
+		// min-width: 100%;
+		// min-height: 100%;
+		// @include position_center;
+	}
+
+	//PART> RWD
 	// width
 	width: 73vw;
 	@include screen-2xl {
@@ -67,21 +112,22 @@
 		width: 84vw;
 	}
 	@include screen-lg {
-		width: 92vw;
+		width: 75vw;
 	}
-
-	> img {
+	@include screen-md {
 		width: 100%;
-		height: 100%;
-
-		// !!! IE NOT SUPPORT !!!
-		// maybe use flex to extend compatibility
-		object-fit: cover;
 	}
 }
 
 .extend_photo {
 	height: $profile-img-height * 2 + $navigation-height;
+
+	@include screen-sm {
+		height: 25rem;
+	}
+	@include screen-xs {
+		height: 16rem;
+	}
 }
 
 .photo_page_text_area {
@@ -124,6 +170,11 @@
 
 		transition-duration: 1.8s;
 		transition-delay: 2.3s;
+	}
+
+	@include screen-md {
+		margin-left: 3.5rem;
+		margin-right: 3.5rem;
 	}
 }
 

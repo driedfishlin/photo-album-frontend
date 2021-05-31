@@ -29,16 +29,19 @@ class PhotoPage extends React.Component<{}> {
 			this.imgExtended = true;
 		};
 	}
+	componentDidMount() {
+		window.setTimeout(this.onPageScroll, 200);
+	}
 
 	render(): React.Node {
 		return (
 			<div
-				onScroll={this.imgExtended ? null : this.onPageScroll}
+				// onScroll={this.imgExtended ? null : this.onPageScroll}
 				className={`photo_page_layer`}
 				ref={this.pageRef}
 			>
 				<div className={`web_wrap`}>
-					<div className={`layout_warp`}>
+					<div className={`photo_page_layout_warp`}>
 						<div className={`photo_page_header`}>
 							<TitleComponent
 								h2={'PHOTO'}
@@ -46,7 +49,7 @@ class PhotoPage extends React.Component<{}> {
 								h4={'２０１９－１２－０１'}
 							/>
 						</div>
-						<div className={`layout_main`}>
+						<div className={`photo_page_layout_main `}>
 							<div className={`left_side_area`}></div>
 							<div className={`photo_page_main`}>
 								<Link

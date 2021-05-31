@@ -12,7 +12,6 @@ const switchTextByPath = (tag: string, path: string) => {
 			if (tag === 'h3') return 'PROFILE';
 			if (tag === 'h4')
 				return '留下影像是為了記得，然後努力成就更好的自己';
-		// default:
 		case '/':
 			if (tag === 'h2') return 'FILMING';
 			if (tag === 'h3') return 'AND KEEP GOING';
