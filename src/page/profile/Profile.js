@@ -6,12 +6,10 @@ class Profile extends React.Component<{}> {
 			<main className={`profile_container`}>
 				<div className={`profile_img_container`}>
 					<img src="../../../public/image/profile_pic_sm.jpg" />
-					<div>
-						<div>
-							<h6>GANG - LIN&nbsp;&nbsp;FAN</h6>
-							<p>Taitung, Taiwan</p>
-						</div>
-					</div>
+				</div>
+				<div className={`profile_page_name`}>
+					<h6>GANG - LIN&nbsp;&nbsp;FAN</h6>
+					<p>Taitung, Taiwan</p>
 				</div>
 				<div className={`profile_text_container`}>
 					<p>

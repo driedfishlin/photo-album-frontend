@@ -46,7 +46,6 @@ type PropsType = {
 
 class Template extends React.Component<PropsType> {
 	render(): React.Node {
-		console.log(this.props);
 		// get PATHNAME & determine SCROLLBAR is visible
 		const path: string = this.props.location.pathname;
 		const photoPageIsOpen: boolean = path.split('/')[1] === 'photo';
@@ -54,7 +53,6 @@ class Template extends React.Component<PropsType> {
 		const scrollbarWidth: number = body?.clientWidth
 			? window.innerWidth - body.clientWidth
 			: 0;
-		// console.log(this.props.UIState.hiddenMenuShow);
 		if (body?.style)
 			body.style.overflowY =
 				photoPageIsOpen || this.props.UIState.hiddenMenuShow

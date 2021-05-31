@@ -99,56 +99,6 @@ header {
 	}
 }
 
-.small_screen_hidden_menu {
-	// @include size(110vw, 110vh);
-	@include size(100vw, 100vh);
-	overflow: hidden;
-	position: fixed;
-	background-color: $color-brightest-transparent;
-	// top: -3%;
-	top: 0;
-	left: 0;
-	z-index: 15;
-	align-items: flex-end;
-	overflow: hidden;
-
-	opacity: 1;
-	transition: opacity 0.3s, visibility 0s;
-
-	> ul {
-		@include size(100vw, 100vh);
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-
-		margin-left: 4.5rem;
-		margin-bottom: 6rem;
-		> li {
-			margin-bottom: 2rem;
-			text-transform: uppercase;
-			font-size: 1.7rem;
-		}
-		@include screen_xs {
-			margin-bottom: 3rem;
-			> li {
-				font-size: 1.5rem;
-			}
-		}
-	}
-
-	//PART> RWD
-	display: none;
-	@include screen_sm {
-		display: flex;
-	}
-}
-
-.hidden_menu_opacity_0 {
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.2s, visibility 0s 0.2s;
-}
-
 .header_title_component {
 	position: relative;
 	display: flex;
@@ -183,11 +133,12 @@ header {
 		font-weight: 600;
 		position: relative;
 		right: -0.05rem;
+		text-align: right;
 	}
 
 	//PART> RWD
 	@include screen-xs {
-		right: -1.5rem;
+		right: -1rem;
 		top: 0.4rem;
 	}
 }
@@ -260,6 +211,56 @@ header {
 	@include screen-lg {
 		display: none;
 	}
+}
+
+.small_screen_hidden_menu {
+	// @include size(110vw, 110vh);
+	@include size(100vw, 100vh);
+	overflow: hidden;
+	position: fixed;
+	background-color: $color-brightest-transparent;
+	// top: -3%;
+	top: 0;
+	left: 0;
+	z-index: 15;
+	align-items: flex-end;
+	overflow: hidden;
+
+	opacity: 1;
+	transition: opacity 0.3s, visibility 0s;
+
+	> ul {
+		@include size(100vw, 100vh);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+
+		margin-left: 4.5rem;
+		margin-bottom: 6rem;
+		> li {
+			margin-bottom: 2rem;
+			text-transform: uppercase;
+			font-size: 1.7rem;
+		}
+		@include screen_xs {
+			margin-bottom: 3rem;
+			> li {
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+	//PART> RWD
+	display: none;
+	@include screen_sm {
+		display: flex;
+	}
+}
+
+.hidden_menu_opacity_0 {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s, visibility 0s 0.2s;
 }
 
 .background_circle_container {

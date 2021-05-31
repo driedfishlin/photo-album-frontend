@@ -30,17 +30,14 @@ type PropsType = {
 
 class Header extends React.Component<PropsType> {
 	render(): React.Node {
-		console.log(this.props);
 		return (
 			<header>
 				<button
-					onClick={() => {
-						if (this.props.isHiddenMenuShow) {
-							this.props.setHiddenMenuState(false);
-						} else {
-							this.props.setHiddenMenuState(true);
-						}
-					}}
+					onClick={() =>
+						this.props.setHiddenMenuState(
+							this.props.isHiddenMenuShow ? false : true
+						)
+					}
 					className={`small_screen_hamburger_btn ${
 						this.props.isHiddenMenuShow
 							? 'transform_to_close_btn'
