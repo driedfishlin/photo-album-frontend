@@ -1,12 +1,18 @@
 // @flow
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-class PhotoListItem extends React.Component<{}> {
+
+type PropsType = {
+	src: string,
+	id: string,
+};
+
+class PhotoListItem extends React.Component<PropsType> {
 	render(): React.Node {
 		return (
-			<Link to={`/photo/asd`}>
+			<Link to={`/photo/${this.props.id}`}>
 				<div className={`home_photo_item`}>
-					<img src={`../../../../public/image/S__27025421.jpg`} />
+					<img src={this.props.src} />
 				</div>
 			</Link>
 		);

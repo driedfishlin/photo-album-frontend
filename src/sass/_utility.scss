@@ -9,3 +9,36 @@
 	top: 50%;
 	left: 50%;
 }
+
+.opacity-0 {
+	opacity: 0;
+}
+
+.opacity-1 {
+	opacity: 1;
+}
+
+.hidden {
+	display: none;
+}
+
+.hidden-child {
+	> * {
+		display: none;
+		opacity: 0;
+	}
+}
+
+.width-full-important {
+	width: 100% !important;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}

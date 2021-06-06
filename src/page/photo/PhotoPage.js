@@ -1,25 +1,72 @@
 // @flow
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import type { Location as LocationType } from 'react-router-dom';
+import { getPhotoData } from '../../utility/ajax';
 
 import TitleComponent from '../../component/TitleComponent';
 
-class PhotoPage extends React.Component<{}> {
+//SECTION> FUNCTION
+const showPhotoFromResponse = function(callback, data) {
+	const photoData = {
+		originalPhoto: data.originalPhoto,
+		title: data.title,
+		filmingDate: data.filmingDate,
+		description: data.description,
+	};
+	this.setState({
+		photoData: {
+			originalPhoto: 'data:image/jpeg;base64,' + data.originalPhoto,
+			title: data.title,
+			filmingDate: data.filmingDate,
+			description: data.description,
+		},
+	});
+	if (callback) window.setTimeout(callback, 100);
+};
+
+//SECTION> TYPE
+type PropsType = {
+	location: LocationType,
+	match: Object,
+	history: Object,
+};
+
+type StatesType = {
+	photoData: {
+		originalPhoto: string,
+		title: string,
+		filmingDate: string,
+		description: string,
+	},
+};
+
+//SECTION> COMPONENT
+class PhotoPage extends React.Component<PropsType, StatesType> {
 	pageRef: { current: null | React.ElementRef<'div'> };
 	imgRef: { current: null | React.ElementRef<'div'> };
 	textContentRef: { current: null | React.ElementRef<'div'> };
 	imgExtended: boolean;
-	onPageScroll: (event: SyntheticEvent<HTMLDivElement>) => void;
+	photoExpand: (event: SyntheticEvent<HTMLDivElement>) => void;
 
-	constructor(props: {}) {
+	constructor(props) {
 		super(props);
 		this.pageRef = React.createRef();
 		this.imgRef = React.createRef();
 		this.textContentRef = React.createRef();
 		this.imgExtended = false;
+		this.state = {
+			photoData: {
+				originalPhoto: '',
+				title: '',
+				filmingDate: '',
+				description: '',
+			},
+		};
 
 		// use to extend the Image height
-		this.onPageScroll = () => {
+		this.photoExpand = () => {
 			if (!this.imgRef?.current) return;
 			this.imgRef.current.classList.add('extend_photo');
 			if (!this.textContentRef?.current) return;
@@ -29,17 +76,18 @@ class PhotoPage extends React.Component<{}> {
 			this.imgExtended = true;
 		};
 	}
+
+	//PART> METHOD
 	componentDidMount() {
-		window.setTimeout(this.onPageScroll, 200);
+		getPhotoData(
+			this.props.location.pathname,
+			showPhotoFromResponse.bind(this, this.photoExpand)
+		);
 	}
 
 	render(): React.Node {
 		return (
-			<div
-				// onScroll={this.imgExtended ? null : this.onPageScroll}
-				className={`photo_page_layer`}
-				ref={this.pageRef}
-			>
+			<div className={`photo_page_layer`} ref={this.pageRef}>
 				<div className={`web_wrap`}>
 					<div className={`photo_page_layout_warp`}>
 						<div className={`photo_page_header`}>
@@ -54,33 +102,47 @@ class PhotoPage extends React.Component<{}> {
 							<div className={`photo_page_main`}>
 								<Link
 									to="/"
-									className={`photo_page_close_btn_above_the_img`}
-								>
+									className={`photo_page_close_btn_above_the_img`}>
 									← CLOSE
 								</Link>
 								<div
 									className={`photo_page_photo`}
-									ref={this.imgRef}
-								>
-									<img src="../../../public/image/S__27025421.jpg" />
+									ref={this.imgRef}>
+									<img
+										src={this.state.photoData.originalPhoto}
+									/>
+									<div
+										className={
+											this.state.photoData.originalPhoto
+												? 'opacity-0'
+												: 'opacity-1'
+										}>
+										<div
+											className={
+												this.state.photoData
+													.originalPhoto
+													? 'hidden'
+													: ''
+											}
+										/>
+									</div>
 								</div>
 								<div
 									ref={this.textContentRef}
-									className={`photo_page_text_area hide_photo_page_text_content`}
-								>
-									<h6>閒暇時光</h6>
-									<p>2020-04-03</p>
+									className={`photo_page_text_area hide_photo_page_text_content`}>
+									<h6>{this.state.photoData.title || ''}</h6>
 									<p>
-										在家人都出門的午後，嘗試做了造型餅乾。
+										{this.state.photoData.filmingDate || ''}
+									</p>
+									<p>
+										{this.state.photoData.description || ''}
 									</p>
 								</div>
 								<div
-									className={`photo_page_close_btn_below_the_img`}
-								>
+									className={`photo_page_close_btn_below_the_img`}>
 									<Link
 										to="/"
-										className={`photo_page_close_btn`}
-									>
+										className={`photo_page_close_btn`}>
 										← CLOSE
 									</Link>
 								</div>
@@ -93,4 +155,5 @@ class PhotoPage extends React.Component<{}> {
 	}
 }
 
-export default PhotoPage;
+const connectedComponent: React.ComponentType<{}> = withRouter(PhotoPage);
+export default connectedComponent;

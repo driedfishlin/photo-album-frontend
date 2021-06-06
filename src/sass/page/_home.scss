@@ -22,13 +22,17 @@
 .home_photo_item {
 	@include size(12.5rem, 7.5rem);
 	overflow: hidden;
+	display: flex;
+	align-items: center;
 
 	> img {
-		filter: grayscale(85%);
-		transition: filter 0.5s;
+		width: 100%;
+		min-height: 100%;
+		object-fit: cover;
+		filter: grayscale(85%) contrast(70%);
 		&:hover {
-			transition: filter 1s;
-			filter: grayscale(0%);
+			transition: filter 0.7s;
+			filter: grayscale(0%) contrast(100%);
 		}
 	}
 
@@ -43,5 +47,29 @@
 	}
 	@include screen-xs {
 		@include size(auto, 20.6rem);
+	}
+}
+
+.home_request_observer {
+	width: 100%;
+	height: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 3rem;
+	margin-bottom: 5rem;
+	> div {
+		@include size(2rem);
+		border-top: 0.12rem solid $color-text-main;
+		border-left: 0.12rem solid $color-brightest-opacity;
+		border-bottom: 0.12rem solid $color-brightest-opacity;
+		border-right: 0.12rem solid $color-brightest-opacity;
+		border-radius: 50%;
+		animation: 1s rotate linear infinite;
+	}
+
+	grid-column: 1 / span 3;
+	@include screen-md {
+		grid-column: 1 / span 2;
 	}
 }

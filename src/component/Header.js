@@ -11,11 +11,11 @@ const switchTextByPath = (tag: string, path: string) => {
 			if (tag === 'h2') return 'LIN';
 			if (tag === 'h3') return 'PROFILE';
 			if (tag === 'h4')
-				return '留下影像是為了記得，然後努力成就更好的自己';
+				return '留下影像是為了記得初衷，然後努力成就更好的自己';
 		case '/':
 			if (tag === 'h2') return 'FILMING';
 			if (tag === 'h3') return 'AND KEEP GOING';
-			if (tag === 'h4') return '細數那些在自己人生路途上留下的影像';
+			if (tag === 'h4') return '細數那些在自己人生路途上所紀錄的影像';
 		default:
 			return '';
 	}
@@ -41,8 +41,7 @@ class Header extends React.Component<PropsType> {
 						this.props.isHiddenMenuShow
 							? 'transform_to_close_btn'
 							: ''
-					}`}
-				>
+					}`}>
 					<div />
 					<div />
 					<div />
@@ -62,9 +61,8 @@ class Header extends React.Component<PropsType> {
 					className={`h1_link`}
 					onClick={() =>
 						window.scrollTo({ top: 0, behavior: 'smooth' })
-					}
-				>
-					<h1>THE&nbsp;&nbsp;FRAME&nbsp;&nbsp;STATE</h1>
+					}>
+					<h1>FRAME&nbsp;&nbsp;OF&nbsp;&nbsp;THE&nbsp;&nbsp;STATE</h1>
 				</Link>
 			</header>
 		);
