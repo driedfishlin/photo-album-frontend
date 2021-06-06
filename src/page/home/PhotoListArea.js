@@ -11,14 +11,12 @@ import Observer from './component/Observer';
 
 const updatePhotoList = function(quantity, responsePhotos) {
 	this.setState(prevState => {
-		//考慮之後將資料往外層存放，避免元件重渲染時遺失資料
 		return {
 			photoList: [...prevState.photoList, ...responsePhotos],
 			requestOrder: prevState.requestOrder + quantity,
+			finishFirstResponse: true,
 		};
 	});
-	if (this.containerRef.current)
-		this.containerRef.current.classList.remove('width-full-important');
 };
 
 type PropsType = {};
@@ -28,20 +26,16 @@ type StateType = {
 		compressPhoto: string,
 		originalPhotoData: string,
 	}>,
+	finishFirstResponse: boolean,
 };
 
 class PhotoListArea extends React.Component<PropsType, StateType> {
-	containerRef: { current: null | React.ElementRef<'div'> };
-	constructor(props: PropsType) {
-		super(props);
-		this.containerRef = React.createRef();
-	}
 	state: StateType = {
 		requestOrder: 0,
 		photoList: [],
+		finishFirstResponse: false,
 	};
 	componentDidMount() {
-		// 需考慮避免重複執行
 		getPhotoList(
 			this.state.requestOrder,
 			firstRequest(), // number of photos required
@@ -55,22 +49,34 @@ class PhotoListArea extends React.Component<PropsType, StateType> {
 				<Route path="/photo/:photo_id" exact>
 					<PhotoPage />
 				</Route>
-				<div
-					ref={this.containerRef}
-					className={`home_page_photos_container width-full-important`}>
-					{this.state.photoList.map(item => {
-						return (
-							<PhotoListItem
-								key={item.originalPhotoData}
-								src={item.compressPhoto}
-								id={item.originalPhotoData}
-							/>
-						);
-					})}
-					<Observer
-						setPhotoListState={updatePhotoList.bind(this)}
-						order={this.state.requestOrder}
-					/>
+				<div className={`home_page_photos_container`}>
+					{!this.state.finishFirstResponse
+						? // response 未回傳前的佔位 div
+						  Array.from(
+								{ length: firstRequest() },
+								() => null
+						  ).map((_, index) => <PhotoListItem key={index} />)
+						: this.state.photoList.map(item => {
+								return (
+									<PhotoListItem
+										key={item.originalPhotoData}
+										src={item.compressPhoto}
+										id={item.originalPhotoData}
+									/>
+								);
+						  })}
+					{this.state.finishFirstResponse ? (
+						<Observer
+							setPhotoListState={updatePhotoList.bind(this)}
+							order={this.state.requestOrder}
+						/>
+					) : (
+						<div
+							className={`home_request_observer`}
+							style={{ paddingTop: '5rem' }}>
+							<div />
+						</div>
+					)}
 				</div>
 			</main>
 		);

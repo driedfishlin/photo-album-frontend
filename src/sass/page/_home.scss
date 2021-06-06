@@ -52,13 +52,14 @@
 
 .home_request_observer {
 	width: 100%;
-	height: 5rem;
+	height: 3.9rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-top: 3rem;
 	margin-bottom: 5rem;
 	> div {
+		margin-top: 5rem;
 		@include size(2rem);
 		border-top: 0.12rem solid $color-text-main;
 		border-left: 0.12rem solid $color-brightest-opacity;
@@ -71,5 +72,9 @@
 	grid-column: 1 / span 3;
 	@include screen-md {
 		grid-column: 1 / span 2;
+	}
+	@include screen-xs {
+		margin-bottom: 0rem;
+		margin-top: 0;
 	}
 }

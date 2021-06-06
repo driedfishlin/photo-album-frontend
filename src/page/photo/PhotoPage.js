@@ -94,7 +94,7 @@ class PhotoPage extends React.Component<PropsType, StatesType> {
 							<TitleComponent
 								h2={'PHOTO'}
 								h3={'TAKEN BY LIN'}
-								h4={'２０１９－１２－０１'}
+								h4={this.state.photoData.filmingDate}
 							/>
 						</div>
 						<div className={`photo_page_layout_main `}>

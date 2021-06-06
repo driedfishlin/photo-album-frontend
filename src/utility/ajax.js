@@ -14,8 +14,8 @@ export const getPhotoList = (order, quantity, callback) => {
 		},
 	})
 		.then(res => {
-			const { responsePhotos } = res.data;
-			callback(quantity, responsePhotos);
+			const { responsePhotos, noMoreData } = res.data;
+			callback(quantity, responsePhotos, noMoreData);
 		})
 		.catch(error => console.log(error));
 };
