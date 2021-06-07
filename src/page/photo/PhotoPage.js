@@ -1,11 +1,15 @@
 // @flow
+
+// >> 展示單張照片的路由頁面，以半透明覆蓋在首頁頁面上
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import type { Location as LocationType } from 'react-router-dom';
 import { getPhotoData } from '../../utility/ajax';
+import errorHandle from '../../utility/errorHandle';
 
 import TitleComponent from '../../component/TitleComponent';
+import PhotoPageContent from './PhotoPageContent';
 
 //SECTION> FUNCTION
 const showPhotoFromResponse = function(callback, data) {
@@ -40,6 +44,7 @@ type StatesType = {
 		filmingDate: string,
 		description: string,
 	},
+	responseError: boolean,
 };
 
 //SECTION> COMPONENT
@@ -63,6 +68,7 @@ class PhotoPage extends React.Component<PropsType, StatesType> {
 				filmingDate: '',
 				description: '',
 			},
+			responseError: false,
 		};
 
 		// use to extend the Image height
@@ -81,7 +87,8 @@ class PhotoPage extends React.Component<PropsType, StatesType> {
 	componentDidMount() {
 		getPhotoData(
 			this.props.location.pathname,
-			showPhotoFromResponse.bind(this, this.photoExpand)
+			showPhotoFromResponse.bind(this, this.photoExpand),
+			errorHandle.bind(this)
 		);
 	}
 
@@ -105,39 +112,12 @@ class PhotoPage extends React.Component<PropsType, StatesType> {
 									className={`photo_page_close_btn_above_the_img`}>
 									← CLOSE
 								</Link>
-								<div
-									className={`photo_page_photo`}
-									ref={this.imgRef}>
-									<img
-										src={this.state.photoData.originalPhoto}
-									/>
-									<div
-										className={
-											this.state.photoData.originalPhoto
-												? 'opacity-0'
-												: 'opacity-1'
-										}>
-										<div
-											className={
-												this.state.photoData
-													.originalPhoto
-													? 'hidden'
-													: ''
-											}
-										/>
-									</div>
-								</div>
-								<div
-									ref={this.textContentRef}
-									className={`photo_page_text_area hide_photo_page_text_content`}>
-									<h6>{this.state.photoData.title || ''}</h6>
-									<p>
-										{this.state.photoData.filmingDate || ''}
-									</p>
-									<p>
-										{this.state.photoData.description || ''}
-									</p>
-								</div>
+								<PhotoPageContent
+									imgRef={this.imgRef}
+									textContentRef={this.textContentRef}
+									photoData={this.state.photoData}
+									responseError={this.state.responseError}
+								/>
 								<div
 									className={`photo_page_close_btn_below_the_img`}>
 									<Link

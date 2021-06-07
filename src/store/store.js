@@ -1,4 +1,5 @@
 // @flow
+// >> Redux 相關設定
 import { createStore, combineReducers } from 'redux';
 import type { Store, Action } from 'redux';
 

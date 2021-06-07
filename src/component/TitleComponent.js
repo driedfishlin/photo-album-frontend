@@ -1,6 +1,14 @@
+// @flow
+// >> 位於 header 的標題元件
 import * as React from 'react';
 
-class TitleComponent extends React.Component<{}> {
+type PropsType = {
+	h2?: string,
+	h3?: string,
+	h4?: string,
+};
+
+class TitleComponent extends React.Component<PropsType> {
 	render(): React.Node {
 		return (
 			<div className={`header_title_component`}>

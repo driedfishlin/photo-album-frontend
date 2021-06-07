@@ -1,4 +1,5 @@
 // @flow
+// >> 存放外部連結 LOGO 之元件
 import * as React from 'react';
 
 class ExternalLinkSide extends React.Component<{}> {
@@ -9,8 +10,7 @@ class ExternalLinkSide extends React.Component<{}> {
 					<a
 						href="https://www.facebook.com/OBwithoboe/"
 						target="_blank"
-						rel="noreferrer noopener"
-					>
+						rel="noreferrer noopener">
 						FACEBOOK
 					</a>
 				</li>
@@ -18,8 +18,7 @@ class ExternalLinkSide extends React.Component<{}> {
 					<a
 						href="https://www.instagram.com/obwithoboe/"
 						target="_blank"
-						rel="noreferrer noopener"
-					>
+						rel="noreferrer noopener">
 						INSTAGRAM
 					</a>
 				</li>
@@ -27,8 +26,7 @@ class ExternalLinkSide extends React.Component<{}> {
 					<a
 						href="https://driedfishlin.medium.com/"
 						target="_blank"
-						rel="noreferrer noopener"
-					>
+						rel="noreferrer noopener">
 						MEDIUM
 					</a>
 				</li>
@@ -36,8 +34,7 @@ class ExternalLinkSide extends React.Component<{}> {
 					<a
 						href="https://github.com/driedfishlin"
 						target="_blank"
-						rel="noreferrer noopener"
-					>
+						rel="noreferrer noopener">
 						GITHUB
 					</a>
 				</li>

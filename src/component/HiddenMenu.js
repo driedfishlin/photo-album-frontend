@@ -1,4 +1,5 @@
 // @flow
+// >> 使用於小尺寸螢幕設備上的隱藏式導覽選單
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -10,15 +11,15 @@ class HiddenMenu extends React.Component<PropsType> {
 			<div
 				className={`small_screen_hidden_menu ${
 					this.props.shouldOpen ? '' : 'hidden_menu_opacity_0'
-				}`}
-			>
+				}`}>
 				<ul>
 					<li>
 						<Link
 							title="home"
 							to={`/`}
-							onClick={() => this.props.setHiddenMenuState(false)}
-						>
+							onClick={() =>
+								this.props.setHiddenMenuState(false)
+							}>
 							home
 						</Link>
 					</li>
@@ -26,8 +27,9 @@ class HiddenMenu extends React.Component<PropsType> {
 						<Link
 							title="profile"
 							to={`/profile`}
-							onClick={() => this.props.setHiddenMenuState(false)}
-						>
+							onClick={() =>
+								this.props.setHiddenMenuState(false)
+							}>
 							profile
 						</Link>
 					</li>
@@ -37,8 +39,7 @@ class HiddenMenu extends React.Component<PropsType> {
 							onClick={() => this.props.setHiddenMenuState(false)}
 							target="_blank"
 							rel="noopener noreferrer nofollow"
-							href={`https://www.facebook.com/OBwithoboe/`}
-						>
+							href={`https://www.facebook.com/OBwithoboe/`}>
 							facebook
 						</a>
 					</li>
@@ -48,8 +49,7 @@ class HiddenMenu extends React.Component<PropsType> {
 							onClick={() => this.props.setHiddenMenuState(false)}
 							target="_blank"
 							rel="noopener noreferrer nofollow"
-							href={`https://www.instagram.com/obwithoboe/`}
-						>
+							href={`https://www.instagram.com/obwithoboe/`}>
 							instagram
 						</a>
 					</li>
@@ -59,8 +59,7 @@ class HiddenMenu extends React.Component<PropsType> {
 							onClick={() => this.props.setHiddenMenuState(false)}
 							target="_blank"
 							rel="noopener noreferrer nofollow"
-							href={`https://driedfishlin.medium.com/`}
-						>
+							href={`https://driedfishlin.medium.com/`}>
 							medium
 						</a>
 					</li>
@@ -70,8 +69,7 @@ class HiddenMenu extends React.Component<PropsType> {
 							onClick={() => this.props.setHiddenMenuState(false)}
 							target="_blank"
 							rel="noopener noreferrer nofollow"
-							href={`https://github.com/driedfishlin`}
-						>
+							href={`https://github.com/driedfishlin`}>
 							github
 						</a>
 					</li>

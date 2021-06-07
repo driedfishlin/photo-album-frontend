@@ -37,7 +37,6 @@ header {
 		letter-spacing: 0.05rem;
 	}
 
-	//PART> RWD
 	@include screen_sm {
 		display: grid;
 		grid-template-columns: 3rem 1fr;
@@ -64,7 +63,6 @@ header {
 		transition-duration: 0.5s;
 	}
 
-	//PART> RWD
 	display: none;
 	@include screen_sm {
 		display: flex;
@@ -113,7 +111,6 @@ header {
 		right: -0.8rem;
 		letter-spacing: 0.5rem;
 
-		//PART> RWD
 		@include screen-xs {
 			font-size: 2.5rem;
 		}
@@ -136,7 +133,6 @@ header {
 		text-align: right;
 	}
 
-	//PART> RWD
 	@include screen-xs {
 		right: -1rem;
 		top: 0.4rem;
@@ -148,7 +144,6 @@ header {
 	display: grid;
 	grid-template-columns: 3fr 43.5rem 3fr;
 
-	//PART> RWD
 	@include screen-lg {
 		grid-template-columns: 1fr 3fr;
 	}
@@ -173,7 +168,6 @@ header {
 		}
 	}
 
-	//PART> RWD
 	@include screen-lg {
 		ul {
 			padding-top: 12.2rem;
@@ -190,7 +184,6 @@ header {
 		margin-right: 1rem;
 	}
 
-	//PART> RWD
 	@include screen-sm {
 		display: none;
 	}
@@ -212,7 +205,6 @@ header {
 		left: 100%;
 	}
 
-	//PART> RWD
 	@include screen-lg {
 		display: none;
 	}
@@ -224,7 +216,6 @@ header {
 	overflow: hidden;
 	position: fixed;
 	background-color: $color-brightest-transparent;
-	// top: -3%;
 	top: 0;
 	left: 0;
 	z-index: 15;
@@ -255,7 +246,6 @@ header {
 		}
 	}
 
-	//PART> RWD
 	display: none;
 	@include screen_sm {
 		display: flex;
@@ -275,7 +265,6 @@ header {
 		@include size(30rem);
 		border-radius: 50%;
 
-		//PART> RWD
 		@include screen-md {
 			@include size(25rem);
 		}
@@ -289,7 +278,7 @@ header {
 		background: url('../../public/image/slash.png');
 		opacity: 0.1;
 	}
-	//PART> RWD
+
 	@include screen-sm {
 		left: auto;
 		right: 0px;

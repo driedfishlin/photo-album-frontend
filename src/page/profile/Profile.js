@@ -1,3 +1,5 @@
+// >> 個人簡介元件
+
 import * as React from 'react';
 
 class Profile extends React.Component<{}> {
@@ -19,22 +21,19 @@ class Profile extends React.Component<{}> {
 						<a
 							href="https://github.com/driedfishlin"
 							target="_blank"
-							rel="noreferrer noopener"
-						>
+							rel="noreferrer noopener">
 							<img src="../../../public/image/logo/github_logo_text.svg" />
 						</a>
 						<a
 							href="https://www.instagram.com/obwithoboe/"
 							target="_blank"
-							rel="noreferrer noopener"
-						>
+							rel="noreferrer noopener">
 							<img src="../../../public/image/logo/instagram_logo_text.svg" />
 						</a>
 						<a
 							href="https://driedfishlin.medium.com/"
 							target="_blank"
-							rel="noreferrer noopener"
-						>
+							rel="noreferrer noopener">
 							<img src="../../../public/image/logo/medium_logo_text.svg" />
 						</a>
 					</div>

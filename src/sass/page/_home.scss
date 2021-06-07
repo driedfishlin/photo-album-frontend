@@ -4,7 +4,8 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		width: max-content;
-		//PART> RWD
+		font-size: 0;
+
 		@include screen-md {
 			grid-template-columns: 1fr 1fr;
 		}
@@ -50,6 +51,32 @@
 	}
 }
 
+.home_photo_item_placeholder {
+	background: black;
+	display: inline-block;
+	> div {
+		@include size(100%, 170%);
+		position: relative;
+		top: -30%;
+		animation-name: move-left-to-right;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+
+		> div {
+			@include size(0rem, 100%);
+			margin: 0 auto;
+			box-shadow: 0 0 3rem 3rem rgba(255, 255, 255, 0.1);
+		}
+	}
+	@include screen-sm {
+		width: 100%;
+		display: inline-block;
+		> div > div {
+			box-shadow: 0 0 9rem 5rem rgba(255, 255, 255, 0.1);
+		}
+	}
+}
+
 .home_request_observer {
 	width: 100%;
 	height: 3.9rem;
@@ -58,7 +85,7 @@
 	justify-content: center;
 	margin-top: 3rem;
 	margin-bottom: 5rem;
-	> div {
+	> .loading-icon {
 		margin-top: 5rem;
 		@include size(2rem);
 		border-top: 0.12rem solid $color-text-main;

@@ -1,4 +1,6 @@
 // @flow
+
+// >> 所有網頁內容的入口模板，操作第一層路由
 import * as React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -62,8 +64,7 @@ class Template extends React.Component<PropsType> {
 		return (
 			<div
 				className={`web_wrap`}
-				style={{ paddingRight: photoPageIsOpen ? '15px' : '0px' }}
-			>
+				style={{ paddingRight: photoPageIsOpen ? '15px' : '0px' }}>
 				<div className={`layout_warp`}>
 					<CircleBackground />
 					<Header

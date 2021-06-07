@@ -33,16 +33,34 @@
 	}
 }
 
-// .width-full-important {
-// 	width: 100% !important;
-// }
+.width-full-important {
+	width: 100% !important;
+}
 
 @keyframes rotate {
 	from {
 		transform: rotate(0deg);
 	}
-
 	to {
 		transform: rotate(360deg);
 	}
 }
+
+@keyframes move-left-to-right {
+	from {
+		transform: translate(-100%, 5rem) rotate(-20deg);
+	}
+	to {
+		transform: translate(100%, -5rem) rotate(-20deg);
+	}
+}
+
+.error-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// .color-brightest {
+// 	color: $color-brightest;
+// }

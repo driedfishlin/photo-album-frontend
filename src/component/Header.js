@@ -1,4 +1,6 @@
 // @flow
+
+// >> 首頁模板區塊的 header
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +33,7 @@ class Header extends React.Component<PropsType> {
 	render(): React.Node {
 		return (
 			<header>
-				<button
+				<button // side navigation bar toggle button
 					onClick={() =>
 						this.props.setHiddenMenuState(
 							this.props.isHiddenMenuShow ? false : true
@@ -50,7 +52,6 @@ class Header extends React.Component<PropsType> {
 					shouldOpen={this.props.isHiddenMenuShow}
 					setHiddenMenuState={this.props.setHiddenMenuState}
 				/>
-
 				<TitleComponent
 					h2={switchTextByPath('h2', this.props.path)}
 					h3={switchTextByPath('h3', this.props.path)}

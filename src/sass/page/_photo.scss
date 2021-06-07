@@ -13,7 +13,6 @@
 
 .photo_page_layout_warp {
 	@extend .layout_warp;
-	// 原本是 1.5rem
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -29,7 +28,6 @@
 	@include screen-md {
 		display: block;
 
-		//PART> RWD
 		> div:first-child {
 			display: none;
 		}
@@ -104,7 +102,6 @@
 
 	> div {
 		background-color: black;
-		// background-color: $color-text-main;
 		@include size(100%);
 		display: flex;
 		align-items: center;
@@ -113,7 +110,7 @@
 		top: 0;
 		left: 0;
 		transition: opacity 1s;
-		> div {
+		> .loading-icon {
 			@include size(2rem);
 			border-top: 0.12rem solid $color-brightest;
 			border-left: 0.12rem solid $color-brightest-opacity;
