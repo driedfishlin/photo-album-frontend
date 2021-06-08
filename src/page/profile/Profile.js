@@ -1,13 +1,17 @@
 // >> 個人簡介元件
 
 import * as React from 'react';
+import personalPhoto from '../../../public/image/profile_pic_sm.jpg';
+import GithubLogo from '../../../public/image/logo/github_logo_text.svg';
+import InstagramLogo from '../../../public/image/logo/instagram_logo_text.svg';
+import MediumLogo from '../../../public/image/logo/medium_logo_text.svg';
 
 class Profile extends React.Component<{}> {
 	render(): React.Node {
 		return (
 			<main className={`profile_container`}>
 				<div className={`profile_img_container`}>
-					<img src="../../../public/image/profile_pic_sm.jpg" />
+					<img src={personalPhoto} />
 				</div>
 				<div className={`profile_page_name`}>
 					<h6>GANG - LIN&nbsp;&nbsp;FAN</h6>
@@ -22,19 +26,19 @@ class Profile extends React.Component<{}> {
 							href="https://github.com/driedfishlin"
 							target="_blank"
 							rel="noreferrer noopener">
-							<img src="../../../public/image/logo/github_logo_text.svg" />
+							<GithubLogo />
 						</a>
 						<a
 							href="https://www.instagram.com/obwithoboe/"
 							target="_blank"
 							rel="noreferrer noopener">
-							<img src="../../../public/image/logo/instagram_logo_text.svg" />
+							<InstagramLogo />
 						</a>
 						<a
 							href="https://driedfishlin.medium.com/"
 							target="_blank"
 							rel="noreferrer noopener">
-							<img src="../../../public/image/logo/medium_logo_text.svg" />
+							<MediumLogo />
 						</a>
 					</div>
 				</div>

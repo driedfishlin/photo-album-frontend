@@ -1,15 +1,19 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
-const mode = 'development';
+const mode = 'production';
+// const mode = 'development';
 
 module.exports = {
 	mode,
 	entry: './src/index.js',
 	output: {
-		path: path.resolve(__dirname, './build'),
-		filename: 'bundle.js',
+		// path: path.resolve(__dirname, './build'),
+		path: path.resolve(__dirname, '../photo-album-backend/build'), // 直接打包到隔壁後端的專案資料夾
+		filename: 'js/index_[contenthash].js',
 		publicPath: '/',
 	},
 	// need to provide when using the browserslist plugin
@@ -50,26 +54,36 @@ module.exports = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: '[name].[ext]',
+							outputPath: 'img/',
+							name: '[name]_[contenthash].[ext]',
 						},
 					},
 				],
+			},
+			{
+				test: /\.svg$/,
+				use: ['@svgr/webpack'],
 			},
 		],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Development',
 			template: './public/index.html',
 			filename: 'index.html',
 			inject: true,
 			minify: true,
 		}),
-		new MiniCssExtractPlugin(),
+		new MiniCssExtractPlugin({
+			filename: 'css/index_[contenthash].css',
+		}),
 	],
-	// devtool: mode === 'development' ? 'eval' : null,
-	devtool: mode === 'development' ? 'inline-source-map' : null,
-	// devtool:mode === 'development' ?  'eval-source-map': null,
+	optimization: {
+		minimize: true,
+		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+	},
+	// devtool: mode === 'development' ? 'eval' : false,
+	// devtool:mode === 'development' ?  'eval-source-map': false,
+	devtool: mode === 'development' ? 'inline-source-map' : false,
 	devServer: {
 		port: 3000,
 		historyApiFallback: true,
