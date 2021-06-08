@@ -68,6 +68,7 @@ header {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		align-items: stretch;
 	}
 	@include screen-xs {
 		@include size(2rem, 1.5rem);
@@ -113,6 +114,8 @@ header {
 
 		@include screen-xs {
 			font-size: 2.5rem;
+			letter-spacing: 0.3rem;
+			right: -0.5rem;
 		}
 	}
 
@@ -134,7 +137,7 @@ header {
 	}
 
 	@include screen-xs {
-		right: -1rem;
+		// right: -1rem;
 		top: 0.4rem;
 	}
 }

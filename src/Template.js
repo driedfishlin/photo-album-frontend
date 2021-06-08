@@ -56,15 +56,22 @@ class Template extends React.Component<PropsType> {
 			? window.innerWidth - body.clientWidth
 			: 0;
 		if (body?.style)
-			body.style.overflowY =
+			body.style.overflow =
 				photoPageIsOpen || this.props.UIState.hiddenMenuShow
 					? 'hidden'
-					: 'scroll';
+					: 'auto';
 
 		return (
 			<div
 				className={`web_wrap`}
-				style={{ paddingRight: photoPageIsOpen ? '15px' : '0px' }}>
+				// 在桌面版瀏覽器減去因為 overflow 隱藏滾動條而損失的寬度
+				style={{
+					paddingRight:
+						photoPageIsOpen &&
+						(document.documentElement?.clientWidth || 0) > 768
+							? '15px'
+							: '0px',
+				}}>
 				<div className={`layout_warp`}>
 					<CircleBackground />
 					<Header

@@ -65,11 +65,17 @@
 	@extend .photo_page_close_btn;
 	position: absolute;
 	top: -1.8rem;
+	font-size: 0.7rem;
 }
 
 .photo_page_close_btn_below_the_img {
 	margin-right: 1.5rem;
+	// only for firefox
+	@-moz-document url-prefix() {
+		padding-right: 1.5rem;
+	}
 	> a {
+		font-size: 0.7rem;
 		float: right;
 	}
 
@@ -153,6 +159,10 @@
 	margin-top: 3rem;
 	margin-bottom: 4rem;
 	padding-right: 1.5rem;
+	// only for firefox
+	@-moz-document url-prefix() {
+		padding-right: 3rem;
+	}
 
 	> * {
 		position: relative;

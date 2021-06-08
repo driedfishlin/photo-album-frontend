@@ -82,8 +82,9 @@ module.exports = {
 		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
 	},
 	// devtool: mode === 'development' ? 'eval' : false,
-	// devtool:mode === 'development' ?  'eval-source-map': false,
-	devtool: mode === 'development' ? 'inline-source-map' : false,
+	// devtool: mode === 'development' ? 'eval-source-map' : false,
+	// devtool: mode === 'development' ? 'inline-source-map' : false,
+	// devtool: mode === 'development' ? 'source-map' : false,
 	devServer: {
 		port: 3000,
 		historyApiFallback: true,

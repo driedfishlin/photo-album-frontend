@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 // SERVER SETTING
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://frame-of-the-state.herokuapp.com/';
+// const baseURL = 'http://127.0.0.1:8000';
 
 // 首頁用於呼叫多個照片縮圖
 // order: 從第幾筆資料開始取（從 0 起算）,
