@@ -3,16 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-
-const mode = 'production';
-// const mode = 'development';
+const mode = require('./project.config');
 
 module.exports = {
-	mode,
+	mode, // 設定於 project.config.js
 	entry: './src/index.js',
 	output: {
-		// path: path.resolve(__dirname, './build'),
-		path: path.resolve(__dirname, '../photo-album-backend/build'), // 直接打包到隔壁後端的專案資料夾
+		path:
+			mode === 'deploy'
+				? path.resolve(__dirname, '../photo-album-backend/build') // 直接打包到隔壁後端的專案資料夾
+				: path.resolve(__dirname, './build'),
 		filename: 'js/index_[contenthash].js',
 		publicPath: '/',
 	},
@@ -81,10 +81,8 @@ module.exports = {
 		minimize: true,
 		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
 	},
-	// devtool: mode === 'development' ? 'eval' : false,
-	// devtool: mode === 'development' ? 'eval-source-map' : false,
-	// devtool: mode === 'development' ? 'inline-source-map' : false,
-	// devtool: mode === 'development' ? 'source-map' : false,
+	// 'eval', 'eval-source-map', 'inline-source-map', 'source-map'
+	devtool: mode === 'development' ? 'eval-source-map' : false,
 	devServer: {
 		port: 3000,
 		historyApiFallback: true,

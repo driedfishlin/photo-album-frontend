@@ -97,8 +97,8 @@ class Template extends React.Component<PropsType> {
 						</div>
 						<div className={`right_side_area`}>
 							<p>
-								By shooting,
-								<br />I trying to capture the elapsed time.
+								By filming,
+								<br />I am trying to capture the elapsed time.
 							</p>
 						</div>
 					</div>

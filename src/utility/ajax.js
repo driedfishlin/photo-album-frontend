@@ -1,9 +1,7 @@
 // >> 非同步請求模組
 import axios from 'axios';
 
-// SERVER SETTING
-const baseURL = 'https://frame-of-the-state.herokuapp.com/';
-// const baseURL = 'http://127.0.0.1:8000';
+import { ajaxRequestURL } from '../../project.config';
 
 // 首頁用於呼叫多個照片縮圖
 // order: 從第幾筆資料開始取（從 0 起算）,
@@ -12,7 +10,7 @@ const baseURL = 'https://frame-of-the-state.herokuapp.com/';
 export const getPhotoList = (order, quantity, callback, errorHandle) => {
 	axios({
 		method: 'POST',
-		baseURL: baseURL,
+		baseURL: ajaxRequestURL,
 		url: '/api/photos',
 		data: {
 			order,
@@ -35,7 +33,7 @@ export const getPhotoList = (order, quantity, callback, errorHandle) => {
 export const getPhotoData = (photoId, callback, errorHandle) => {
 	axios({
 		method: 'GET',
-		baseURL: baseURL,
+		baseURL: ajaxRequestURL,
 		url: `/api${photoId}`,
 	})
 		.then(res => {
